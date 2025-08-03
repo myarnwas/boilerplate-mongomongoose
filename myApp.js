@@ -28,20 +28,19 @@ var personSchema = new mongoose.Schema({
 /** 3) Create and Save a Person */
 var Person = mongoose.model('Person', personSchema);
 
-const createAndSavePerson = async (done) => {
-  const newPerson = new Person({
-    name: "Mayar",
-    age: 22,
-    favoriteFoods: ["Pizza", "Mango"]
+var createAndSavePerson = function(done) {
+  var janeFonda = new Person({
+    name: "Jane Fonda",
+    age: 84,
+    favoriteFoods: ["eggs", "fish", "fresh fruit"]
   });
 
-  try {
-    const data = await newPerson.save();
+  janeFonda.save(function(err, data) {
+    if (err) return console.error(err);
     done(null, data);
-  } catch (err) {
-    done(err);
-  }
+  });
 };
+
 
 
 
